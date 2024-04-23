@@ -10,7 +10,7 @@
     "format": "prettier --check .",
     "format:fix": "prettier --write --list-different .",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next build && next start"
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^0.8.0",
