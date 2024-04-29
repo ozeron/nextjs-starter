@@ -60,7 +60,7 @@ export async function Plans({
 
       <div className="mb-5 mt-3 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-5">
         {sortedPlans.map((plan, index) => {
-          return <Plan key={`plan-${index}`} plan={plan} />;
+          return <Plan key={`plan-${index.toString()}`} plan={plan} />;
         })}
       </div>
 

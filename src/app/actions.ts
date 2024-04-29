@@ -68,7 +68,7 @@ export async function getCheckoutURL(variantId: number, embed = false) {
       },
       productOptions: {
         enabledVariants: [variantId],
-        redirectUrl: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/billing/`,
+        redirectUrl: `${process.env.NEXT_PUBLIC_APP_URL ?? ''}/dashboard/billing/`,
         receiptButtonText: "Go to Dashboard",
         receiptThankYouNote: "Thank you for signing up to Lemon Stand!",
       },
@@ -153,7 +153,7 @@ export async function setupWebhook() {
   }
 
   // eslint-disable-next-line no-console -- allow
-  console.log(`Webhook ${webhook?.id} created on Lemon Squeezy.`);
+  console.log(`Webhook ${webhook?.id ?? ''} created on Lemon Squeezy.`);
 }
 
 /**
@@ -304,7 +304,7 @@ export async function processWebhookEvent(webhookEvent: NewWebhookEvent) {
 
   if (dbwebhookEvent.length < 1) {
     throw new Error(
-      `Webhook event #${webhookEvent.id} not found in the database.`,
+      `Webhook event #${webhookEvent.id.toString()} not found in the database.`,
     );
   }
 
@@ -581,7 +581,7 @@ export async function changePlan(currentPlanId: number, newPlanId: number) {
 
   if (!subscription) {
     throw new Error(
-      `No subscription with plan id #${currentPlanId} was found.`,
+      `No subscription with plan id #${currentPlanId.toString()} was found.`,
     );
   }
 

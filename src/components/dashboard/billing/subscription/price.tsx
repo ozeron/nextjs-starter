@@ -22,7 +22,7 @@ export function SubscriptionPrice({
   }
 
   const formattedIntervalCount =
-    intervalCount && intervalCount !== 1 ? `every ${intervalCount} ` : "every";
+    intervalCount && intervalCount !== 1 ? `every ${intervalCount.toString()} ` : "every";
 
-  return <p>{`${formattedPrice} ${formattedIntervalCount} ${interval}`}</p>;
+  return <p>{`${formattedPrice} ${formattedIntervalCount} ${interval ?? ''}`}</p>;
 }

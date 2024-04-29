@@ -46,7 +46,7 @@ export async function ChangePlans({ currentPlan }: { currentPlan?: NewPlan }) {
           return (
             <Plan
               isChangingPlans={true}
-              key={`plan-${index}`}
+              key={`plan-${index.toString()}`}
               plan={plan}
               currentPlan={currentPlan}
             />
