@@ -115,7 +115,7 @@ export const subscriptions = pgTable("subscription", {
 if (!process.env.POSTGRES_URL) {
   console.log('issue with postgres_url in schema.ts')
   console.log(process.env)
-  throw new Error("POSTGRES_URL is not set");
+  // throw new Error("POSTGRES_URL is not set");
 }
 
 // Export types for the tables.
@@ -123,5 +123,5 @@ export type NewPlan = typeof plans.$inferInsert;
 export type NewWebhookEvent = typeof webhookEvents.$inferInsert;
 export type NewSubscription = typeof subscriptions.$inferInsert;
 
-export const sql = neon<boolean, boolean>(process.env.POSTGRES_URL);
+export const sql = neon<boolean, boolean>(process.env.POSTGRES_URL ?? '');
 export const db = drizzle(sql);
