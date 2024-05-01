@@ -272,8 +272,11 @@ export async function storeWebhookEvent(
   body: NewWebhookEvent["body"],
 ) {
   if (!process.env.POSTGRES_URL) {
+    console.log('issue with postgres_url')
+    console.log(process.env)
     throw new Error("POSTGRES_URL is not set");
   }
+
 
   const id = crypto.randomInt(100000000, 1000000000);
 
