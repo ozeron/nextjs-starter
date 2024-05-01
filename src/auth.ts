@@ -1,10 +1,17 @@
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
+import { pgTable, PgTableFn } from 'drizzle-orm/pg-core';
 import NextAuth, { type NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
-import { db } from "./db/schema";
+import { db, mySchema } from "./db/schema";
+
+
+// Will properly map table names
+const useVoiceTable: PgTableFn = (tableName, columns, options) => {
+  return mySchema.table(tableName, columns, options)
+};
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: DrizzleAdapter(db),
+  adapter: DrizzleAdapter(db, useVoiceTable),
   providers: [Google({
     clientId: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET
