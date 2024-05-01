@@ -1,11 +1,11 @@
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
-import { pgTable, PgTableFn } from 'drizzle-orm/pg-core';
+import type { PgTableFn } from 'drizzle-orm/pg-core';
 import NextAuth, { type NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
 import { db, mySchema } from "./db/schema";
 
 
-// Will properly map table names
+// @ts-expect-error we want to override schema
 const useVoiceTable: PgTableFn = (tableName, columns, options) => {
   return mySchema.table(tableName, columns, options)
 };
