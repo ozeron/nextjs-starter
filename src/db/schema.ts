@@ -113,7 +113,7 @@ export const subscriptions = pgTable("subscription", {
 });
 
 if (!process.env.POSTGRES_URL) {
-  console.log('issue with postgres_url')
+  console.log('issue with postgres_url in schema.ts')
   console.log(process.env)
   throw new Error("POSTGRES_URL is not set");
 }

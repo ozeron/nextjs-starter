@@ -272,7 +272,7 @@ export async function storeWebhookEvent(
   body: NewWebhookEvent["body"],
 ) {
   if (!process.env.POSTGRES_URL) {
-    console.log('issue with postgres_url')
+    console.log('issue with postgres_url in actions.ts')
     console.log(process.env)
     throw new Error("POSTGRES_URL is not set");
   }
