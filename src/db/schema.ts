@@ -4,7 +4,7 @@ import {
   boolean,
   integer,
   jsonb,
-  pgTable,
+  pgSchema,
   primaryKey,
   serial,
   text,
@@ -12,7 +12,9 @@ import {
 } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "next-auth/adapters";
 
-export const users = pgTable("user", {
+export const mySchema = pgSchema("usevoice");
+
+export const users = mySchema.table("user", {
   id: text("id").notNull().primaryKey(),
   name: text("name"),
   email: text("email").notNull(),
@@ -20,7 +22,7 @@ export const users = pgTable("user", {
   image: text("image"),
 });
 
-export const accounts = pgTable(
+export const accounts = mySchema.table(
   "account",
   {
     userId: text("userId")
@@ -44,7 +46,7 @@ export const accounts = pgTable(
   }),
 );
 
-export const sessions = pgTable("session", {
+export const sessions = mySchema.table("session", {
   sessionToken: text("sessionToken").notNull().primaryKey(),
   userId: text("userId")
     .notNull()
@@ -52,7 +54,7 @@ export const sessions = pgTable("session", {
   expires: timestamp("expires", { mode: "date" }).notNull(),
 });
 
-export const verificationTokens = pgTable(
+export const verificationTokens = mySchema.table(
   "verificationToken",
   {
     identifier: text("identifier").notNull(),
@@ -64,7 +66,7 @@ export const verificationTokens = pgTable(
   }),
 );
 
-export const webhookEvents = pgTable("webhookEvent", {
+export const webhookEvents = mySchema.table("webhookEvent", {
   id: integer("id").primaryKey(),
   createdAt: timestamp("createdAt", { mode: "date" }).notNull().defaultNow(),
   eventName: text("eventName").notNull(),
@@ -73,7 +75,7 @@ export const webhookEvents = pgTable("webhookEvent", {
   processingError: text("processingError"),
 });
 
-export const plans = pgTable("plan", {
+export const plans = mySchema.table("plan", {
   id: serial("id").primaryKey(),
   productId: integer("productId").notNull(),
   productName: text("productName"),
@@ -89,7 +91,7 @@ export const plans = pgTable("plan", {
   sort: integer("sort"),
 });
 
-export const subscriptions = pgTable("subscription", {
+export const subscriptions = mySchema.table("subscription", {
   id: serial("id").primaryKey(),
   lemonSqueezyId: text("lemonSqueezyId").unique().notNull(),
   orderId: integer("orderId").notNull(),

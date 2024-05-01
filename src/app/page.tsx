@@ -25,7 +25,7 @@ export default function Home() {
           className="pt-2"
           action={async () => {
             "use server";
-            await signIn("github");
+            await signIn("google");
           }}
         >
           <SubmitButton
@@ -34,7 +34,7 @@ export default function Home() {
             shape="pill"
             variant="primary"
           >
-            Sign in with GitHub
+            Sign in with Google
           </SubmitButton>
         </form>
       </main>

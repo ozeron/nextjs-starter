@@ -1,12 +1,12 @@
 {
-  "id": "6fec18fd-5615-49a3-a507-074c95fb1161",
+  "id": "c6af8543-8148-4ab7-8d05-c6fbdd241a3f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
   "tables": {
     "account": {
       "name": "account",
-      "schema": "",
+      "schema": "usevoice",
       "columns": {
         "userId": {
           "name": "userId",
@@ -81,6 +81,7 @@
           "name": "account_userId_user_id_fk",
           "tableFrom": "account",
           "tableTo": "user",
+          "schemaTo": "usevoice",
           "columnsFrom": [
             "userId"
           ],
@@ -104,7 +105,7 @@
     },
     "plan": {
       "name": "plan",
-      "schema": "",
+      "schema": "usevoice",
       "columns": {
         "id": {
           "name": "id",
@@ -201,7 +202,7 @@
     },
     "session": {
       "name": "session",
-      "schema": "",
+      "schema": "usevoice",
       "columns": {
         "sessionToken": {
           "name": "sessionToken",
@@ -228,6 +229,7 @@
           "name": "session_userId_user_id_fk",
           "tableFrom": "session",
           "tableTo": "user",
+          "schemaTo": "usevoice",
           "columnsFrom": [
             "userId"
           ],
@@ -243,7 +245,7 @@
     },
     "subscription": {
       "name": "subscription",
-      "schema": "",
+      "schema": "usevoice",
       "columns": {
         "id": {
           "name": "id",
@@ -350,6 +352,7 @@
           "name": "subscription_userId_user_id_fk",
           "tableFrom": "subscription",
           "tableTo": "user",
+          "schemaTo": "usevoice",
           "columnsFrom": [
             "userId"
           ],
@@ -363,6 +366,7 @@
           "name": "subscription_planId_plan_id_fk",
           "tableFrom": "subscription",
           "tableTo": "plan",
+          "schemaTo": "usevoice",
           "columnsFrom": [
             "planId"
           ],
@@ -386,7 +390,7 @@
     },
     "user": {
       "name": "user",
-      "schema": "",
+      "schema": "usevoice",
       "columns": {
         "id": {
           "name": "id",
@@ -426,7 +430,7 @@
     },
     "verificationToken": {
       "name": "verificationToken",
-      "schema": "",
+      "schema": "usevoice",
       "columns": {
         "identifier": {
           "name": "identifier",
@@ -462,7 +466,7 @@
     },
     "webhookEvent": {
       "name": "webhookEvent",
-      "schema": "",
+      "schema": "usevoice",
       "columns": {
         "id": {
           "name": "id",
@@ -510,7 +514,9 @@
     }
   },
   "enums": {},
-  "schemas": {},
+  "schemas": {
+    "usevoice": "usevoice"
+  },
   "_meta": {
     "columns": {},
     "schemas": {},
